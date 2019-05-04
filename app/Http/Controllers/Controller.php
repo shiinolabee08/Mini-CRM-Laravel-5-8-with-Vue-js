@@ -59,7 +59,7 @@ class Controller extends BaseController
     public function update($id, Request $request)
     {  	
 
-    	$request->validate($this->fields_to_validate);
+    	// $request->validate($this->fields_to_validate);
 
     	$record = $this->model_class::findOrFail($id);
         $record->update($request->only($this->fields_to_update));

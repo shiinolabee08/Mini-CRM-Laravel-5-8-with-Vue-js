@@ -57,9 +57,9 @@
             let id = app.$route.params.id;
             app.employeeId = id;
 
-            axios.get('/api/v1/employees/' + id)
+            axios.get('/api/employees/' + id)
                 .then(function (resp) {
-                    app.employee = resp.data;
+                    app.employee = resp.data.data;
                 })
                 .catch(function () {
                     alert("Could not load your employee")
@@ -67,7 +67,7 @@
 
             axios.get('/api/companies')
                 .then(function (resp) {
-                    app.companies = resp.data;
+                    app.companies = resp.data.data;
                 })
                 .catch(function (resp) {
                     console.log(resp);
@@ -92,10 +92,10 @@
             saveForm() {
                 event.preventDefault();
                 var app = this;
-                var newCompany = app.employee;
-                axios.patch('/api/v1/employees/' + app.employeeId, newCompany)
+                var employee = app.employee;
+                axios.post('/api/employees/' + app.employeeId + '/update', employee)
                     .then(function (resp) {
-                        app.$router.replace('/');
+                        app.$router.replace('/admin/employees');
                     })
                     .catch(function (resp) {
                         console.log(resp);

@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label class="control-label">Logo</label>
-                            <input type="file" v-model="company.logo" class="form-control">
+                            <input type="file" v-on:change="handleLogo" ref="logo" class="form-control">
                         </div>
                     </div>
                     <div class="row">
@@ -48,9 +48,9 @@
             let app = this;
             let id = app.$route.params.id;
             app.companyId = id;
-            axios.get('/api/v1/companies/' + id)
+            axios.get('/api/companies/' + id)
                 .then(function (resp) {
-                    app.company = resp.data;
+                    app.company = resp.data.data;
                 })
                 .catch(function () {
                     alert("Could not load your company")
@@ -71,15 +71,22 @@
             saveForm() {
                 event.preventDefault();
                 var app = this;
-                var newCompany = app.company;
-                axios.patch('/api/companies/' + app.companyId, newCompany)
+                var company = app.company;
+                axios.post('/api/companies/' + app.companyId + '/update', company)
                     .then(function (resp) {
-                        app.$router.replace('/');
+                        app.$router.replace('/admin/companies');
                     })
                     .catch(function (resp) {
                         console.log(resp);
                         alert("Could not create your company");
                     });
+            },
+            handleLogo() {
+                let logoFile = this.$refs.logo.files;
+
+                this.company.logo = logoFile;
+
+                console.log(this.company.logo, this.company.logo);
             }
         }
     }
