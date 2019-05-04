@@ -6,7 +6,7 @@
                 <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
         		<router-link :to="{name: 'createCompany'}" class="btn btn-success">New Company</router-link>
         	</div>
-        	<div class="panel panel-default">
+        	<div class="panel panel-default" v-if="companies.length">
         		<div class="panel-heading">List of Companies</div>
         		<div class="panel-body">
         			<table class="table table-bordered table-striped">
@@ -24,7 +24,7 @@
                             <td>{{ company.logo }}</td>
                             <td>{{ company.name }}</td>
                             <td>{{ company.email }}</td>
-                            <td>{{ company.website_url }}</td>
+                            <td><a v-bind:href="company.website_url" target="_blank">{{ company.website_url }}</a></td>
                             <td>
                                 <router-link :to="{name: 'updateCompany', params: {id: company.id}}" class="btn btn-xs btn-default">
                                     Edit
@@ -38,6 +38,7 @@
         			</table>
         		</div>
         	</div>
+            <div class="well well-info" v-if="companies.length == 0">No records yet.</div>
         </div>
     </div>
 </template>
@@ -53,7 +54,7 @@
             var app = this;
             axios.get('/api/companies')
                 .then(function (resp) {
-                    app.companies = resp.data;
+                    app.companies = resp.data.data;
                 })
                 .catch(function (resp) {
                     console.log(resp);

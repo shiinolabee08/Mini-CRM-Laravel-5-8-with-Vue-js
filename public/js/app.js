@@ -2015,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2024,7 +2025,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var app = this;
     axios.get('/api/companies').then(function (resp) {
-      app.companies = resp.data;
+      app.companies = resp.data.data;
     })["catch"](function (resp) {
       console.log(resp);
       alert("Could not load companies");
@@ -2283,6 +2284,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2292,7 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var app = this;
     axios.get('/api/employees').then(function (resp) {
-      app.employees = resp.data;
+      app.employees = resp.data.data;
     })["catch"](function (resp) {
       console.log(resp);
       alert("Could not load employees");
@@ -38227,75 +38229,101 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-heading" }, [
-          _vm._v("List of Companies")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" }, [
-          _c("table", { staticClass: "table table-bordered table-striped" }, [
-            _vm._m(0),
+      _vm.companies.length
+        ? _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v("List of Companies")
+            ]),
             _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.companies, function(company) {
-                return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(company.logo))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(company.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(company.email))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(company.website_url))]),
+            _c("div", { staticClass: "panel-body" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered table-striped" },
+                [
+                  _vm._m(0),
                   _vm._v(" "),
                   _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-xs btn-default",
-                          attrs: {
-                            to: {
-                              name: "updateCompany",
-                              params: { id: company.id }
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Edit\n                            "
+                    "tbody",
+                    _vm._l(_vm.companies, function(company) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(company.logo))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(company.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(company.email))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: company.website_url,
+                                target: "_blank"
+                              }
+                            },
+                            [_vm._v(_vm._s(company.website_url))]
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-xs btn-danger",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteRecord(company.id, _vm.index)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Delete\n                            "
-                          )
-                        ]
-                      )
-                    ],
-                    1
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "btn btn-xs btn-default",
+                                attrs: {
+                                  to: {
+                                    name: "updateCompany",
+                                    params: { id: company.id }
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Edit\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-xs btn-danger",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteRecord(
+                                      company.id,
+                                      _vm.index
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Delete\n                            "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    0
                   )
-                ])
-              }),
-              0
-            )
+                ]
+              )
+            ])
           ])
-        ])
-      ])
+        : _vm._e(),
+      _vm._v(" "),
+      (_vm.companies.length = 0)
+        ? _c("div", { staticClass: "well well-info" }, [
+            _vm._v("No records yet.")
+          ])
+        : _vm._e()
     ])
   ])
 }
@@ -38607,79 +38635,89 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "panel panel-default" }, [
-      _c("div", { staticClass: "panel-heading" }, [_vm._v("Companies list")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel-body" }, [
-        _c("table", { staticClass: "table table-bordered table-striped" }, [
-          _vm._m(0),
+    _vm.employees.length
+      ? _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("Companies list")
+          ]),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.employees, function(employee, index) {
-              return _c("tr", [
-                _c("td", [
-                  _vm._v(
-                    _vm._s(employee.first_name) +
-                      " " +
-                      _vm._s(employee.last_name)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(employee.email))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(employee.phone))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(employee.company))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-xs btn-default",
-                        attrs: {
-                          to: {
-                            name: "updateEmployee",
-                            params: { id: employee.id }
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Edit\n                        "
-                        )
-                      ]
-                    ),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("table", { staticClass: "table table-bordered table-striped" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.employees, function(employee, index) {
+                  return _c("tr", [
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(employee.first_name) +
+                          " " +
+                          _vm._s(employee.last_name)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(employee.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(employee.phone))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(employee.company))]),
                     _vm._v(" "),
                     _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-xs btn-danger",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteRecord(employee.id, index)
-                          }
-                        }
-                      },
+                      "td",
                       [
-                        _vm._v(
-                          "\n                            Delete\n                        "
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-xs btn-default",
+                            attrs: {
+                              to: {
+                                name: "updateEmployee",
+                                params: { id: employee.id }
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Edit\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-xs btn-danger",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteRecord(employee.id, index)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Delete\n                        "
+                            )
+                          ]
                         )
-                      ]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
-              ])
-            }),
-            0
-          )
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
-      ])
-    ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.employees.length == 0
+      ? _c("div", { staticClass: "well well-info" }, [
+          _vm._v("No records yet.")
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

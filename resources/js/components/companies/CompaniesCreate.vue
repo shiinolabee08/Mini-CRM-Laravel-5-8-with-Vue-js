@@ -61,7 +61,7 @@
                 var newCompany = app.company;
                 axios.post('/api/companies', newCompany)
                     .then(function (resp) {
-                        app.$router.push({path: '/'});
+                        app.$router.push({path: '/admin/companies'});
                     })
                     .catch(function (resp) {
                         console.log(resp);
