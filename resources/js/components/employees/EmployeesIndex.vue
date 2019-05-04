@@ -10,10 +10,10 @@
     			<table class="table table-bordered table-striped">
     			<thead>
     				<tr>
-    				  <th>Name</th>
-    				  <th>Address</th>
-    				  <th>Website</th>
+    				  <th>Full Name</th>
     				  <th>Email</th>
+    				  <th>Phone #</th>
+    				  <th>Company</th>
     				  <th width="100"> </th>
     				</tr>
     			</thead>
@@ -22,7 +22,7 @@
                         <td>{{ employee.first_name }} {{ employee.last_name }}</td>
                         <td>{{ employee.email }}</td>
                         <td>{{ employee.phone }}</td>
-                        <td>{{ employee.company }}</td>
+                        <td>{{ employee.companyDetails.name }}</td>
                         <td>
                             <router-link :to="{name: 'updateEmployee', params: {id: employee.id}}" class="btn btn-xs btn-default">
                                 Edit

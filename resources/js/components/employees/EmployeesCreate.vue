@@ -33,8 +33,9 @@
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label class="control-label">Company</label>
-                            <select class="form-control select2" v-model="employee.company_id">
-                                <option v-for="company in companies" :value="company.id">@{{company.name }}</option>
+                            <select class="form-control" v-model="employee.company_id">
+                                <option value="" selected>Select Company</option>
+                                <option v-for="company in companies" :value="company.id">{{company.name }}</option>
                             </select>
                         </div>
                     </div>
@@ -53,10 +54,11 @@
         data: function () {
             return {
                 employee: {
-                    name: '',
-                    address: '',
-                    website: '',
+                    first_name: '',
+                    last_name: '',
+                    phone: '',
                     email: '',
+                    company_id: 0,
                 },
                 companies: []
             }
@@ -65,10 +67,9 @@
             var app = this;
             axios.get('/api/companies')
                 .then(function (resp) {
-                    app.companies = resp.data;
+                    app.companies = resp.data.data;
                 })
                 .catch(function (resp) {
-                    console.log(resp);
                     alert("Could not load companies");
                 });
         },
@@ -79,7 +80,7 @@
                 var newEmployee = app.employee;
                 axios.post('/api/employees', newEmployee)
                     .then(function (resp) {
-                        app.$router.push({path: '/'});
+                        app.$router.push({path: '/admin/employees'});
                     })
                     .catch(function (resp) {
                         console.log(resp);

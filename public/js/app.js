@@ -2203,14 +2203,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       employee: {
-        name: '',
-        address: '',
-        website: '',
-        email: ''
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: '',
+        company_id: 0
       },
       companies: []
     };
@@ -2218,9 +2220,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var app = this;
     axios.get('/api/companies').then(function (resp) {
-      app.companies = resp.data;
+      app.companies = resp.data.data;
     })["catch"](function (resp) {
-      console.log(resp);
       alert("Could not load companies");
     });
   },
@@ -2231,7 +2232,7 @@ __webpack_require__.r(__webpack_exports__);
       var newEmployee = app.employee;
       axios.post('/api/employees', newEmployee).then(function (resp) {
         app.$router.push({
-          path: '/'
+          path: '/admin/employees'
         });
       })["catch"](function (resp) {
         console.log(resp);
@@ -2334,6 +2335,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -38721,7 +38723,7 @@ var render = function() {
                         expression: "employee.company_id"
                       }
                     ],
-                    staticClass: "form-control select2",
+                    staticClass: "form-control",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -38742,12 +38744,18 @@ var render = function() {
                       }
                     }
                   },
-                  _vm._l(_vm.companies, function(company) {
-                    return _c("option", { domProps: { value: company.id } }, [
-                      _vm._v("@" + _vm._s(company.name))
-                    ])
-                  }),
-                  0
+                  [
+                    _c("option", { attrs: { value: "", selected: "" } }, [
+                      _vm._v("Select Company")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.companies, function(company) {
+                      return _c("option", { domProps: { value: company.id } }, [
+                        _vm._v(_vm._s(company.name))
+                      ])
+                    })
+                  ],
+                  2
                 )
               ])
             ]),
@@ -38846,7 +38854,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(employee.phone))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(employee.company))]),
+                    _c("td", [_vm._v(_vm._s(employee.companyDetails.name))]),
                     _vm._v(" "),
                     _c(
                       "td",
@@ -38912,13 +38920,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Address")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Website")]),
+        _c("th", [_vm._v("Full Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone #")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Company")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } })
       ])
@@ -39112,7 +39120,7 @@ var render = function() {
                         expression: "employee.company_id"
                       }
                     ],
-                    staticClass: "form-control select2",
+                    staticClass: "form-control",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -39133,12 +39141,18 @@ var render = function() {
                       }
                     }
                   },
-                  _vm._l(_vm.companies, function(company) {
-                    return _c("option", { domProps: { value: company.id } }, [
-                      _vm._v("@" + _vm._s(company.name))
-                    ])
-                  }),
-                  0
+                  [
+                    _c("option", { attrs: { value: "", selected: "" } }, [
+                      _vm._v("Select Company")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.companies, function(company) {
+                      return _c("option", { domProps: { value: company.id } }, [
+                        _vm._v(_vm._s(company.name))
+                      ])
+                    })
+                  ],
+                  2
                 )
               ])
             ]),

@@ -34,8 +34,9 @@
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label class="control-label">Company</label>
-                            <select class="form-control select2" v-model="employee.company_id">
-                                <option v-for="company in companies" :value="company.id">@{{company.name }}</option>
+                            <select class="form-control" v-model="employee.company_id">
+                                <option value="" selected>Select Company</option>
+                                <option v-for="company in companies" :value="company.id">{{company.name }}</option>
                             </select>
                         </div>
                     </div>
