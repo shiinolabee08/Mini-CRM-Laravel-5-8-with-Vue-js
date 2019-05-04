@@ -65,16 +65,16 @@ class LoginController extends Controller
 
     private function attempt(array $credentials = [])
     {   
-        $user = User::where( 'email', trim($credentials['email']) )->where('record_status', 1)->first();
+        $user = User::where( 'email', trim($credentials['email']) )->first();
         
         if( $user ){
 
             if ( JWTAuth::attempt($credentials)) {
                 
                 Auth::login($user);
-                $token = JWTAuth::fromUser($user);
+                // $token = JWTAuth::fromUser($user);
 
-                return array(($user->employee ? $user->employee : $user->client),$token);
+                return array($user/*,$token*/);
             }        
             
         }

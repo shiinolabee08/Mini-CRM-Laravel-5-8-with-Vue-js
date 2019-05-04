@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- Bootstrap -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -64,13 +67,8 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height" id="app">
-            <div class="container">
-                <div class="page-header">
-                  <h1>Mini CRM for Companies/Employees <small>using Laravel(5.5) and Vue.js</small></h1>
-                </div>
-            </div>
-            <router-view name="loginPage"></router-view>
-        </div>
+        <div id="app"></div>
     </body>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </html>

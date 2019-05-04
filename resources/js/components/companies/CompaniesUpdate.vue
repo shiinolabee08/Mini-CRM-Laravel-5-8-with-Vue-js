@@ -38,7 +38,7 @@
         </form>
     </div>
 </div>
-<script type="text/javascript">
+<script>
     export default {
         mounted() {
             let app = this;

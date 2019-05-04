@@ -1,8 +1,9 @@
+<template>
 <div class="container">
     <div class="row">
         
     	<div class="form-group">
-            <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashbord</router-link>
+            <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
     		<router-link :to="{name: 'createCompany'}" class="btn btn-success">New Company</router-link>
     	</div>
     	<div class="panel panel-default">
@@ -25,7 +26,7 @@
                         <td>{{ company.email }}</td>
                         <td>{{ company.website_url }}</td>
                         <td>
-                            <router-link :to="{name: 'editCompany', params: {id: company.id}}" class="btn btn-xs btn-default">
+                            <router-link :to="{name: 'updateCompany', params: {id: company.id}}" class="btn btn-xs btn-default">
                                 Edit
                             </router-link>
                             <a href="#" class="btn btn-xs btn-danger" v-on:click="deleteRecord(company.id, index)">
@@ -39,8 +40,9 @@
     	</div>
     </div>
 </div>
+</template>
 
-<script type="text/javascript">
+<script>
     export default {
         data: function () {
             return {

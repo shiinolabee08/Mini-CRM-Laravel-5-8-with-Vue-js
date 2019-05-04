@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -10,11 +12,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 /**
 * Resources/Collections
 **/
-use App\Employee;
+use App\Employee as Employee;
 use App\Http\Resources\Employee as EmployeeResource;
 use App\Http\Resources\EmployeeCollection;
 
-use App\Company;
+use App\Company as Company;
 use App\Http\Resources\Company as CompanyResource;
 use App\Http\Resources\CompanyCollection;
 

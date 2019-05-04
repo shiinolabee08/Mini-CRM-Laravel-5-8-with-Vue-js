@@ -1,41 +1,43 @@
-<div>
-	<div class="form-group">
-        <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashbord</router-link>
-		<router-link :to="{name: 'createEmployee'}" class="btn btn-success">Create New Employee</router-link>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Companies list</div>
-		<div class="panel-body">
-			<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-				  <th>Name</th>
-				  <th>Address</th>
-				  <th>Website</th>
-				  <th>Email</th>
-				  <th width="100"> </th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="employee, index in employees">
-                    <td>{{ employee.first_name }} {{ employee.last_name }}</td>
-                    <td>{{ employee.email }}</td>
-                    <td>{{ employee.phone }}</td>
-                    <td>{{ employee.company }}</td>
-                    <td>
-                        <router-link :to="{name: 'updateEmployee', params: {id: employee.id}}" class="btn btn-xs btn-default">
-                            Edit
-                        </router-link>
-                        <a href="#" class="btn btn-xs btn-danger" v-on:click="deleteRecord(employee.id, index)">
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-			</tbody>
-			</table>
-		</div>
-	</div>
-</div>
+<template>
+    <div>
+    	<div class="form-group">
+            <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
+    		<router-link :to="{name: 'createEmployee'}" class="btn btn-success">Create New Employee</router-link>
+    	</div>
+    	<div class="panel panel-default">
+    		<div class="panel-heading">Companies list</div>
+    		<div class="panel-body">
+    			<table class="table table-bordered table-striped">
+    			<thead>
+    				<tr>
+    				  <th>Name</th>
+    				  <th>Address</th>
+    				  <th>Website</th>
+    				  <th>Email</th>
+    				  <th width="100"> </th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr v-for="employee, index in employees">
+                        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.phone }}</td>
+                        <td>{{ employee.company }}</td>
+                        <td>
+                            <router-link :to="{name: 'updateEmployee', params: {id: employee.id}}" class="btn btn-xs btn-default">
+                                Edit
+                            </router-link>
+                            <a href="#" class="btn btn-xs btn-danger" v-on:click="deleteRecord(employee.id, index)">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+    			</tbody>
+    			</table>
+    		</div>
+    	</div>
+    </div>
+</template>
 
 <script type="text/javascript">
     export default {

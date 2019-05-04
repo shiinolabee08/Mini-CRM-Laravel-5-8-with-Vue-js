@@ -15,12 +15,12 @@ class EmployeeController extends Controller
 	protected $fields_to_validate = [
         'first_name'=> 'required|max:255',
         'last_name' => 'required|max:255',
-        'email'		=> 'unique'
+        'email'		=> 'unique:employees'
     ];
 
     protected $fields_to_update = ['first_name', 'last_name', 'email', 'phone', 'company_id'];
 
-    protected $model_class = 'Employee';
+    protected $model_class = 'App\Employee';
 
     protected $model_resource = 'EmployeeResource';
 
@@ -33,43 +33,4 @@ class EmployeeController extends Controller
     {
         return new EmployeeResource(Employee::findOrFail($id));
     }
-
-    /*public function store(Request $request)
-    {
-        $request->validate([
-            'first_name'=> 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email'		=> 'unique'
-        ]);
-
-        $employee = Employee::create($request->all());
-
-        return (new EmployeeResource($employee))
-                ->response()
-                ->setStatusCode(201);
-    }
-
-    public function update($id, Request $request)
-    {  	
-
-    	$request->validate([
-            'first_name'=> 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email'		=> 'unique'
-        ]);
-
-    	$employee = Employee::findOrFail($id);
-        $employee->update($request->only(['first_name', 'last_name', 'email', 'phone', 'company_id']));
-
-        return new EmployeeResource($employee);
-    }
-
-    public function delete($id)
-    {
-        $employee = Employee::findOrFail($id);
-        $employee->delete();
-
-        return response()->json(null, 204);
-    }
-    */
 }

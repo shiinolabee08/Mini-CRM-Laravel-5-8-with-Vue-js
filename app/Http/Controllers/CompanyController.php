@@ -12,12 +12,12 @@ class CompanyController extends Controller
 {
     protected $fields_to_validate = [
         'name'  => 'required|max:255',
-        'email' => 'unique'
+        'email' => 'unique:companies'
     ];
 
     protected $fields_to_update = [ 'name', 'email', 'logo', 'website_url' ];
 
-    protected $model_class = 'Company';
+    protected $model_class = 'App\Company';
 
     protected $model_resource = 'CompanyResource';
 

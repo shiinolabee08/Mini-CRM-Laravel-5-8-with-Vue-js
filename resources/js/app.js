@@ -14,26 +14,22 @@ import VueRouter from 'vue-router';
 window.Vue.use(VueRouter);
 
 //Company Module
-import CompaniesIndex from './components/companies/CompaniesIndex';
-import CompaniesCreate from './components/companies/CompaniesCreate';
-import CompaniesUpdate from './components/companies/CompaniesUpdate';
+import CompaniesIndex from './components/companies/CompaniesIndex.vue';
+import CompaniesCreate from './components/companies/CompaniesCreate.vue';
+import CompaniesUpdate from './components/companies/CompaniesUpdate.vue';
 
 //Employee Module
-import EmployeesIndex from './components/employees/EmployeesIndex';
-import EmployeesCreate from './components/employees/EmployeesCreate';
-import EmployeesUpdate from './components/employees/EmployeesUpdate';
+import EmployeesIndex from './components/employees/EmployeesIndex.vue';
+import EmployeesCreate from './components/employees/EmployeesCreate.vue';
+import EmployeesUpdate from './components/employees/EmployeesUpdate.vue';
 
-import Login from './components/auth/Login';
+import Login from './components/auth/Login.vue';
 
-import Dashboard from './components/Dashboard';
+import App from './components/App.vue';
+
+import Dashboard from './components/Dashboard.vue';
 
 const routes = [
-	{
-        path: '/',
-        redirect: {
-            name: "loginPage"
-        }
-    },
     {
         path: '/login',
         component: Login,
@@ -81,6 +77,6 @@ const routes = [
     },
 ]
 
-const router = new VueRouter({ routes })
+const router = new VueRouter({ mode: 'history', routes })
 
-const app = new Vue({ router }).$mount('#app')
+const app = new Vue({ router, render: h => h(App)}).$mount('#app');
