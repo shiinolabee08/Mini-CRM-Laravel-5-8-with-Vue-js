@@ -26,7 +26,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        return new EmployeeCollection(Employee::all()->with('companyDetails'));
+        return new EmployeeCollection(Employee::all());
     }
 
     public function show($id)

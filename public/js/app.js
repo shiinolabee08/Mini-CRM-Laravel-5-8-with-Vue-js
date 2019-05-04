@@ -38854,7 +38854,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(employee.phone))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(employee.companyDetails.name))]),
+                    _c("td", [_vm._v(_vm._s(employee.company_id))]),
                     _vm._v(" "),
                     _c(
                       "td",
@@ -38926,7 +38926,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Phone #")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Company")]),
+        _c("th", [_vm._v("Company ID")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } })
       ])
