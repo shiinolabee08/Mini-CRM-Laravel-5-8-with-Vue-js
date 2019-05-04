@@ -38238,7 +38238,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.companies, function(company, index) {
+              _vm._l(_vm.companies, function(company) {
                 return _c("tr", [
                   _c("td", [_vm._v(_vm._s(company.logo))]),
                   _vm._v(" "),
@@ -38264,7 +38264,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\r\n                                Edit\r\n                            "
+                            "\n                                Edit\n                            "
                           )
                         ]
                       ),
@@ -38276,13 +38276,13 @@ var render = function() {
                           attrs: { href: "#" },
                           on: {
                             click: function($event) {
-                              return _vm.deleteRecord(company.id, index)
+                              return _vm.deleteRecord(company.id, _vm.index)
                             }
                           }
                         },
                         [
                           _vm._v(
-                            "\r\n                                Delete\r\n                            "
+                            "\n                                Delete\n                            "
                           )
                         ]
                       )
@@ -38306,15 +38306,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("Logo")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Address")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Website")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "100" } })
+        _c("th", [_vm._v("Website Url")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "100" } }, [_vm._v("Actions")])
       ])
     ])
   }

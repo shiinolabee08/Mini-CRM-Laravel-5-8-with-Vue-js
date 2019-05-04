@@ -1,45 +1,45 @@
 <template>
-<div class="container">
-    <div class="row">
-        
-    	<div class="form-group">
-            <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
-    		<router-link :to="{name: 'createCompany'}" class="btn btn-success">New Company</router-link>
-    	</div>
-    	<div class="panel panel-default">
-    		<div class="panel-heading">List of Companies</div>
-    		<div class="panel-body">
-    			<table class="table table-bordered table-striped">
-    			<thead>
-    				<tr>
-    				  <th>Name</th>
-    				  <th>Address</th>
-    				  <th>Website</th>
-    				  <th>Email</th>
-    				  <th width="100"> </th>
-    				</tr>
-    			</thead>
-    			<tbody>
-    				<tr v-for="company, index in companies">
-                        <td>{{ company.logo }}</td>
-                        <td>{{ company.name }}</td>
-                        <td>{{ company.email }}</td>
-                        <td>{{ company.website_url }}</td>
-                        <td>
-                            <router-link :to="{name: 'updateCompany', params: {id: company.id}}" class="btn btn-xs btn-default">
-                                Edit
-                            </router-link>
-                            <a href="#" class="btn btn-xs btn-danger" v-on:click="deleteRecord(company.id, index)">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-    			</tbody>
-    			</table>
-    		</div>
-    	</div>
+    <div class="container">
+        <div class="row">
+            
+        	<div class="form-group">
+                <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
+        		<router-link :to="{name: 'createCompany'}" class="btn btn-success">New Company</router-link>
+        	</div>
+        	<div class="panel panel-default">
+        		<div class="panel-heading">List of Companies</div>
+        		<div class="panel-body">
+        			<table class="table table-bordered table-striped">
+        			<thead>
+        				<tr>
+        				  <th>Logo</th>
+        				  <th>Name</th>
+        				  <th>Email</th>
+        				  <th>Website Url</th>
+        				  <th width="100">Actions</th>
+        				</tr>
+        			</thead>
+        			<tbody>
+        				<tr v-for="company in companies">
+                            <td>{{ company.logo }}</td>
+                            <td>{{ company.name }}</td>
+                            <td>{{ company.email }}</td>
+                            <td>{{ company.website_url }}</td>
+                            <td>
+                                <router-link :to="{name: 'updateCompany', params: {id: company.id}}" class="btn btn-xs btn-default">
+                                    Edit
+                                </router-link>
+                                <a href="#" class="btn btn-xs btn-danger" v-on:click="deleteRecord(company.id, index)">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+        			</tbody>
+        			</table>
+        		</div>
+        	</div>
+        </div>
     </div>
-</div>
 </template>
 
 <script>

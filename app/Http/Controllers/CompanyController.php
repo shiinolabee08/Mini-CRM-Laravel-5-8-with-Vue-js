@@ -19,7 +19,7 @@ class CompanyController extends Controller
 
     protected $model_class = 'App\Company';
 
-    protected $model_resource = 'CompanyResource';
+    protected $model_resource = 'App\Http\Resources\Company';
 
     public function index()
     {

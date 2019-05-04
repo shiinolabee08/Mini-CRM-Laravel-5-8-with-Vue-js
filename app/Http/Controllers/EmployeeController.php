@@ -22,7 +22,7 @@ class EmployeeController extends Controller
 
     protected $model_class = 'App\Employee';
 
-    protected $model_resource = 'EmployeeResource';
+    protected $model_resource = 'App\Http\Resources\Employee';
 
     public function index()
     {
