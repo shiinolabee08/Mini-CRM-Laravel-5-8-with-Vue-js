@@ -1,5 +1,5 @@
 <div class="form-group">
-    <router-link to="/" class="btn btn-default">Back</router-link>
+    <router-link :to="{name: 'indexEmployee'}" class="btn btn-primary">Back to Employee List</router-link>
 </div>
 
 <div class="panel panel-default">
@@ -73,7 +73,7 @@
                 event.preventDefault();
                 var app = this;
                 var newEmployee = app.employee;
-                axios.post('/api/companies', newEmployee)
+                axios.post('/api/employees', newEmployee)
                     .then(function (resp) {
                         app.$router.push({path: '/'});
                     })

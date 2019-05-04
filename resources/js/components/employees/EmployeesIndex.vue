@@ -1,6 +1,7 @@
 <div>
 	<div class="form-group">
-		<router-link :to="{name: 'createEmployee'}" class="btn btn-success">Create new employee</router-link>
+        <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashbord</router-link>
+		<router-link :to="{name: 'createEmployee'}" class="btn btn-success">Create New Employee</router-link>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">Companies list</div>

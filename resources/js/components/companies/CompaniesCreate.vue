@@ -1,5 +1,5 @@
 <div class="form-group">
-    <router-link to="/" class="btn btn-default">Back</router-link>
+    <router-link :to="{name: 'indexCompany'}" class="btn btn-primary">Back to Company List</router-link>
 </div>
 
 <div class="panel panel-default">
