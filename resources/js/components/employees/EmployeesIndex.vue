@@ -1,11 +1,10 @@
 <template>
-    <div>
+    <div role="tabpanel" class="tab-pane active">
     	<div class="form-group">
-            <router-link :to="{name: 'dashboard'}" class="btn btn-success">Back to Dashboard</router-link>
     		<router-link :to="{name: 'createEmployee'}" class="btn btn-success">Create New Employee</router-link>
     	</div>
     	<div class="panel panel-default" v-if="employees.length">
-    		<div class="panel-heading">Companies list</div>
+    		<div class="panel-heading">Employee list</div>
     		<div class="panel-body">
     			<table class="table table-bordered table-striped">
     			<thead>
@@ -37,6 +36,7 @@
     		</div>
     	</div>
         <div class="well well-info" v-if="employees.length == 0">No records yet.</div>
+        <div class="clearfix"></div>
     </div>
 </template>
 

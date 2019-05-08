@@ -27,55 +27,59 @@ import Login from './components/auth/Login.vue';
 
 import App from './components/App.vue';
 
-import Dashboard from './components/Dashboard.vue';
+import Content from './components/Content.vue';
+
+import Sidebar from './components/Sidebar.vue';
 
 const routes = [
     {
-        path: '/login',
-        component: Login,
-        name : 'loginPage'
+        path : '/',
+        component : App,
     },
     {
-        path: '/admin/dashboard',
-        component : Dashboard,
-        name : 'dashboard'
+        path: '/admin',
+        components: { default : Content, sidebar : Sidebar },
+        children :[
+            {
+                path: 'login',
+                component: Login,
+                name : 'loginPage'
+            },
+            //Companies
+            {
+                path: 'companies', 
+                components: { default: CompaniesIndex, sidebar : false}, 
+                name : 'indexCompany',
+            },
+            {
+                path: 'companies/create', 
+                components: { default: CompaniesIndex, sidebar: CompaniesCreate }, 
+                name: 'createCompany'
+            },
+            {
+                path: 'companies/edit/:id', 
+                components: { default: CompaniesIndex, sidebar: CompaniesUpdate },
+                name: 'updateCompany'
+            },
+            //Employees
+            {
+                path: 'employees', 
+                components: { default: EmployeesIndex, sidebar: false }, 
+                name : 'indexEmployee'
+            },
+            {
+                path: 'employees/create', 
+                components: { default: EmployeesIndex, sidebar: EmployeesCreate }, 
+                name: 'createEmployee'
+            },
+            {
+                path: 'employees/edit/:id', 
+                components: { default: EmployeesIndex, sidebar: EmployeesUpdate }, 
+                name: 'updateEmployee'
+            }
+        ]
     },
-    
-    //Companies
-    {
-    	path: '/admin/companies', 
-    	component: CompaniesIndex, 
-    	name : 'indexCompany'
-    },
-    {
-    	path: '/admin/companies/create', 
-    	component: CompaniesCreate, 
-    	name: 'createCompany'
-    },
-    {
-    	path: '/admin/companies/edit/:id', 
-    	component: CompaniesUpdate, 
-    	name: 'updateCompany'
-    },
-
-
-   	//Employees
-    {
-    	path: '/admin/employees', 
-    	component: EmployeesIndex, 
-    	name : 'indexEmployee'
-    },
-    {
-    	path: '/admin/employees/create', 
-    	component: EmployeesCreate, 
-    	name: 'createEmployee'
-    },
-    {
-    	path: '/admin/employees/edit/:id', 
-    	component: EmployeesUpdate, 
-    	name: 'updateEmployee'
-    },
-]
+];
 
 const router = new VueRouter({ mode: 'history', routes })
 

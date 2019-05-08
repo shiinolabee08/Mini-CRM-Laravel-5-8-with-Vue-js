@@ -51,9 +51,9 @@ class LoginController extends Controller
         $credentials = $request->only('email','password');
         
         if(list($user,$token) = $this->attempt($credentials)){
-            return response()->success(compact('user', 'token'));
+            return response()->json(compact('user', 'token'));
         }else{
-            return response()->error('Invalid credentials', 401);
+            return response()->json(['success' => false]);
         }
         
     }    
@@ -72,9 +72,10 @@ class LoginController extends Controller
             if ( JWTAuth::attempt($credentials)) {
                 
                 Auth::login($user);
+                $token = uniqid();
                 // $token = JWTAuth::fromUser($user);
 
-                return array($user/*,$token*/);
+                return array($user,$token);
             }        
             
         }
